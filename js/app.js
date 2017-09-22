@@ -1,8 +1,20 @@
+var circles = [];
+
+
+
 function onKeyDown(event) {
     var maxPoint = new Point(view.size.width, view.size.height);
     var randomPoint = Point.random();
     var point = maxPoint * randomPoint;
+    var newCircle = new Path.Circle(point, 100);
+    newCircle.fillColor = "purple";
 
-    new Path.Circle(new Point(point), 10).fillColor = "purple";
+    circles.push(newCircle);
+};
 
+function onFrame(event) {
+    for (var i = 0; i < circles.length; i++) {
+        circles[i].fillColor.hue += 1;
+        circles[i].scale(.86);
+    }
 }
